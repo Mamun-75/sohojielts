@@ -673,24 +673,39 @@
     <!-- =========================================================================
          ফুটার সেকশন: আপনার ইমেইল, লিংকডইন এবং মানবিক বার্তা (নির্দেশনা ৯ ও ১০)
          ========================================================================= -->
-    <footer class="bg-slate-950 text-slate-300 pt-12 pb-8 border-t border-slate-800 mt-12">
+    <style>
+        /* মোবাইলে 468x60 ফুটার অ্যাড যেন বক্সের বাইরে না যায় */
+        @media (max-width: 540px) {
+            .footer-ad-scale {
+                width: 468px;
+                height: 60px;
+                transform: scale(0.68);
+                transform-origin: center center;
+                margin: -10px 0;
+            }
+        }
+    </style>
+
+    <footer class="bg-slate-950 text-slate-300 pt-12 pb-8 border-t border-slate-800 mt-12 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
             
-            <!-- ফুটারের উপরে শেষ বিজ্ঞাপন স্লট -->
-            <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 text-center">
-                <span class="text-[10px] uppercase tracking-widest text-slate-500 block mb-1"></span>
-                <!-- PASTE FOOTER AD SCRIPT HERE -->
-                <script>
-  atOptions = {
-    'key' : '07c9895472d92fcccf77b6fe3df456ba',
-    'format' : 'iframe',
-    'height' : 60,
-    'width' : 468,
-    'params' : {}
-  };
-</script>
-<script src="https://bauval.org/22/07c9895472d92fcccf77b6fe3df456ba"></script>
-                <p class="text-xs text-slate-400 bangla-text"></p>
+            <!-- ফুটারের উপরে শেষ বিজ্ঞাপন স্লট (Mobile Responsive Fixed) -->
+            <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-3 text-center overflow-hidden flex flex-col items-center justify-center min-h-[65px]">
+                <div class="w-full overflow-hidden flex justify-center items-center">
+                    <div class="footer-ad-scale flex justify-center items-center">
+                        <!-- PASTE FOOTER AD SCRIPT HERE -->
+                        <script>
+                          atOptions = {
+                            'key' : '07c9895472d92fcccf77b6fe3df456ba',
+                            'format' : 'iframe',
+                            'height' : 60,
+                            'width' : 468,
+                            'params' : {}
+                          };
+                        </script>
+                        <script src="https://bauval.org/22/07c9895472d92fcccf77b6fe3df456ba"></script>
+                    </div>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
