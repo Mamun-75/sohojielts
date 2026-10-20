@@ -1138,18 +1138,20 @@
                 `;
 
 // প্রতি ৭টি কার্ডের পর পর একটি নন-ইন্ট্রুসিভ ইন-ফিড বিজ্ঞাপন স্লট যুক্ত করা হচ্ছে
-                if (ruleNum % 7 === 0) {
+if (ruleNum % 7 === 0) {
                     html += `
-                    <div class="ad-slot-box rounded-2xl p-3 text-center my-4 overflow-hidden flex flex-col items-center justify-center min-h-[75px]">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Sponsored</span>
-                        <iframe 
-                            srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;overflow:hidden;'><script>atOptions={'key':'24aea642fc2a5f84c503929e8ebc6780','format':'iframe','height':50,'width':320,'params':{}};<\/script><script src='https://bauval.org/22/24aea642fc2a5f84c503929e8ebc6780'><\/script></body>" 
-                            width="320" 
-                            height="55" 
-                            frameborder="0" 
-                            scrolling="no" 
-                            style="border:none; overflow:hidden; max-width:100%;">
-                        </iframe>
+                    <div class="ad-slot-box rounded-2xl p-2 text-center my-3 overflow-hidden flex flex-col items-center justify-center bg-slate-50/50">
+                        <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">Sponsored</span>
+                        <div class="w-full flex justify-center items-center overflow-hidden">
+                            <iframe 
+                                srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><script>atOptions={'key':'24aea642fc2a5f84c503929e8ebc6780','format':'iframe','height':50,'width':320,'params':{}};<\/script><script src='https://bauval.org/22/24aea642fc2a5f84c503929e8ebc6780'><\/script></body>" 
+                                width="320" 
+                                height="50" 
+                                frameborder="0" 
+                                scrolling="no" 
+                                style="border:none; overflow:hidden; width:320px; height:50px;">
+                            </iframe>
+                        </div>
                     </div>
                     `;
                 }
