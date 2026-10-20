@@ -151,33 +151,48 @@
         </div>
     </header>
 
-    <!-- =========================================================================
-         প্রোগ্রামার নোট (TOP LEADERBOARD AD SLOT #1):
-         এখানে আপনার Google AdSense বা Adsterra-এর 728x90 / Responsive Header Ad কোড বসাবেন।
-         ========================================================================= -->
-    <div class="max-w-7xl mx-auto px-4 pt-4 w-full">
-       <div class="ad-slot-box rounded-2xl p-3 text-center flex flex-col items-center justify-center min-h-[85px]">
-          <span class="ad-badge"> </span> 
-            <!-- PASTE HEADER AD SCRIPT HERE -->
-            <script>
-                
-  atOptions = {
-    'key' : '70fc53dad09c1de56ec9a593048519c7',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
-</script>
-<script src="https://bauval.org/22/70fc53dad09c1de56ec9a593048519c7"> </script>
-            <div class="flex items-center gap-3 text-slate-500 text-xs sm:text-sm bangla-text">
-               
-                                <span class="bg-brand-100 text-brand-700 font-bold px-2.5 py-1 rounded-lg"> </span>
-                <span> </span>
-                
+<!-- =========================================================================
+     প্রোগ্রামার নোট (TOP LEADERBOARD AD SLOT #1 - MOBILE RESPONSIVE FIX)
+     ========================================================================= -->
+<style>
+    /* মোবাইলে বড় ব্যানার অ্যাড যেন বক্সের বাইরে না যায় এবং পেজ না ভাঙে */
+    .responsive-ad-container {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @media (max-width: 768px) {
+        .ad-scale-wrapper {
+            width: 728px;
+            height: 90px;
+            transform: scale(0.46);
+            transform-origin: center center;
+            margin: -24px 0; /* স্কেল করার পর ওপর-নিচের বাড়তি ফাঁকা জায়গা কমানোর জন্য */
+        }
+    }
+</style>
+
+<div class="max-w-7xl mx-auto px-4 pt-3 w-full overflow-hidden">
+    <div class="ad-slot-box rounded-2xl p-2 text-center flex flex-col items-center justify-center min-h-[55px] sm:min-h-[100px] overflow-hidden">
+        <div class="responsive-ad-container">
+            <div class="ad-scale-wrapper flex justify-center items-center">
+                <!-- PASTE HEADER AD SCRIPT HERE -->
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '70fc53dad09c1de56ec9a593048519c7',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/70fc53dad09c1de56ec9a593048519c7/invoke.js"></script>
             </div>
         </div>
     </div>
+</div>
 
     <!-- গ্লোবাল সার্চ রেজাল্ট পপ-আপ -->
     <div id="searchModal" class="hidden max-w-7xl mx-auto px-4 mt-4 w-full">
