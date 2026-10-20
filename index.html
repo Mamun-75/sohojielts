@@ -1140,9 +1140,18 @@
 // প্রতি ৭টি কার্ডের পর পর একটি নন-ইন্ট্রুসিভ ইন-ফিড বিজ্ঞাপন স্লট যুক্ত করা হচ্ছে
 if (ruleNum % 7 === 0) {
                     html += `
-                    <div class="ad-slot-box rounded-2xl p-2 text-center my-3 overflow-hidden flex flex-col items-center justify-center bg-slate-50/50">
+                    <style>
+                        .in-feed-ad-wrap {
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            overflow: hidden;
+                        }
+                    </style>
+                    <div class="rounded-2xl p-2 text-center my-3 overflow-hidden flex flex-col items-center justify-center bg-slate-100/60 border border-slate-200/60">
                         <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">Sponsored</span>
-                        <div class="w-full flex justify-center items-center overflow-hidden">
+                        <div class="in-feed-ad-wrap">
                             <iframe 
                                 srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><script>atOptions={'key':'24aea642fc2a5f84c503929e8ebc6780','format':'iframe','height':50,'width':320,'params':{}};<\/script><script src='https://bauval.org/22/24aea642fc2a5f84c503929e8ebc6780'><\/script></body>" 
                                 width="320" 
