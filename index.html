@@ -1579,11 +1579,18 @@ if (ruleNum % 7 === 0) {
                     </div>
                 </div>
 
-                <!-- বিজ্ঞাপন স্লট (Native Banner Ad) -->
-                <div class="rounded-2xl p-3 text-center my-3 overflow-hidden flex flex-col items-center justify-center bg-slate-100/60 border border-slate-200/60">
-                    <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Sponsored</span>
-                    <div id="native-ad-slot" class="w-full flex justify-center items-center overflow-hidden">
-                        <div id="container-32a633b417ecc96b359cdbbf639f5e9f" class="w-full"></div>
+<!-- বিজ্ঞাপন স্লট (Fixed & Responsive) -->
+                <div class="rounded-2xl p-2 text-center my-3 overflow-hidden flex flex-col items-center justify-center bg-slate-100/60 border border-slate-200/60">
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">Sponsored</span>
+                    <div class="w-full flex justify-center items-center overflow-hidden">
+                        <iframe 
+                            srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><script>atOptions={'key':'24aea642fc2a5f84c503929e8ebc6780','format':'iframe','height':50,'width':320,'params':{}};<\/script><script src='https://bauval.org/22/24aea642fc2a5f84c503929e8ebc6780'><\/script></body>" 
+                            width="320" 
+                            height="55" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            style="border:none; overflow:hidden; width:320px; height:55px;">
+                        </iframe>
                     </div>
                 </div>
 
@@ -1623,15 +1630,7 @@ if (ruleNum % 7 === 0) {
                 </div>
             `;
 
-            // Native Banner Ad-এর স্ক্রিপ্টটি ডাইনামিকভাবে রান করার কোড
-            const adSlot = document.getElementById('native-ad-slot');
-            if (adSlot) {
-                const adScript = document.createElement('script');
-                adScript.async = true;
-                adScript.setAttribute('data-cfasync', 'false');
-                adScript.src = "https://bauval.org/21/32a633b417ecc96b359cdbbf639f5e9f";
-                adSlot.appendChild(adScript);
-            }
+
         }
         // =========================================================================
         // ৪. 500+ VOCABULARY, SYNONYMS, COLLOCATIONS & PHRASES DATABASE ENGINE
