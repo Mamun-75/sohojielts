@@ -1523,8 +1523,7 @@ if (ruleNum % 7 === 0) {
                 ]
             }
         };
-
-        // IELTS মডিউলের ৩৫টি পূর্ণাঙ্গ রুলস তৈরি ও রেন্ডার করার ফাংশন
+// IELTS মডিউলের ৩৫টি পূর্ণাঙ্গ রুলস তৈরি ও রেন্ডার করার ফাংশন
         function renderIeltsModule(modKey) {
             document.querySelectorAll('.ielts-tab-btn').forEach(b => {
                 b.className = "ielts-tab-btn px-4 py-2.5 rounded-xl text-xs font-extrabold bg-slate-100 text-slate-700 hover:bg-slate-200";
@@ -1536,12 +1535,12 @@ if (ruleNum % 7 === 0) {
             const fullLessons = [...mod.coreLessons];
             let count = fullLessons.length + 1;
 
-            // ৩৫টি বিস্তারিত লেসন পূর্ণ করা হচ্ছে
+            // ৩৫টি বিস্তারিত লেসন পূর্ণ করা হচ্ছে (এখানে ভাঙা লাইনটি ঠিক করা হয়েছে)
             while (fullLessons.length < 35) {
                 const wordPair = mod.words50[(count - 1) % mod.words50.length];
                 fullLessons.push({
                     title: `Band 8.5 Tactical Rule #${count}: Mastering "${wordPair[0]}" & Contextual Precision`,
-                    tip: `পরীক্ষার এই অংশে উচ্চ স্কোর পেতে "${wordPair[0]}" (${wordPair[1]}) শব্দটিকে সঠিক প্রেক্ষাপটে ব্যবহার করুন। উদাহরণ: "${wordPair[2]}" — খেয়াল রাখবেন বানান ও গ্রামাটিক্যাল পজিশন যেন শতভাগ নির্ভুল থাকে।`
+                    tip: `পরীক্ষার এই অংশে উচ্চ স্কোর পেতে "${wordPair[0]}" (${wordPair[1]}) শব্দটিকে সঠিক প্রেক্ষাপটে ব্যবহার করুন। উদাহরণ: "${wordPair[2]}" — খেয়াল রাখবেন বানান ও গ্রামাটিক্যাল পজিশন যেন শতভাগ নির্ভুল থাকে।`
                 });
                 count++;
             }
@@ -1555,7 +1554,7 @@ if (ruleNum % 7 === 0) {
                     <p class="text-xs sm:text-sm text-slate-200 bangla-text mt-1">${mod.subtitle}</p>
                 </div>
 
-                <!-- সাব-ক্যাটাগরি ব্রেকডাউন (সকল ধরনের প্রশ্নের নিয়ম) -->
+                <!-- সাব-ক্যাটাগরি ব্রেকডাউন (সকল ধরনের প্রশ্নের নিয়ম) -->
                 <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
                     <h4 class="font-extrabold text-lg text-slate-900 bangla-text">📌 এই মডিউলের সকল প্রকার প্রশ্নের ধরন (All Question Subcategories):</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -1568,8 +1567,8 @@ if (ruleNum % 7 === 0) {
                     </div>
                 </div>
 
-<!-- বিজ্ঞাপন স্লট (IELTS Module Responsive Ad) -->
-                <div class="ad-slot-box rounded-2xl p-3 text-center my-4 overflow-hidden flex flex-col items-center justify-center bg-slate-50/50 border border-slate-200/60">
+                <!-- বিজ্ঞাপন স্লট (Fixed & Responsive) -->
+                <div class="rounded-2xl p-2 text-center my-3 overflow-hidden flex flex-col items-center justify-center bg-slate-100/60 border border-slate-200/60">
                     <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">Sponsored</span>
                     <div class="w-full flex justify-center items-center overflow-hidden">
                         <iframe 
@@ -1585,7 +1584,7 @@ if (ruleNum % 7 === 0) {
 
                 <!-- ৩৫টি গোল্ডেন রুলস ও লেসন -->
                 <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
-                    <h4 class="font-extrabold text-lg text-slate-900 bangla-text">🔥 Band 8.5+ পাওয়ার ৩৫টি গোল্ডেন রুলস ও কৌশল (Step-by-Step Cards):</h4>
+                    <h4 class="font-extrabold text-lg text-slate-900 bangla-text">🔥 Band 8.5+ পাওয়ার ৩৫টি গোল্ডেন রুলস ও কৌশল (Step-by-Step Cards):</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         ${fullLessons.map((ls, i) => `
                             <div class="p-4 rounded-2xl border border-slate-200 hover:border-brand-500 transition bg-white shadow-sm space-y-1.5">
@@ -1602,14 +1601,14 @@ if (ruleNum % 7 === 0) {
                 <!-- ৫০+ প্র্যাকটিস শব্দ ও উদাহরণ বাক্য (প্রতিটি মডিউলের জন্য আলাদা) -->
                 <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
                     <div class="flex flex-wrap items-center justify-between gap-2">
-                        <h4 class="font-extrabold text-lg text-slate-900 bangla-text">💎 এই মডিউলের জন্য ${mod.words50.length}টি হাই-স্কোরিং শব্দ ও বাক্যে প্রয়োগ:</h4>
+                        <h4 class="font-extrabold text-lg text-slate-900 bangla-text">💎 এই মডিউলের জন্য ${mod.words50.length}টি হাই-স্কোরিং শব্দ ও বাক্যে প্রয়োগ:</h4>
                         <span class="text-xs font-bold text-brand-600 bg-brand-50 px-3 py-1 rounded-full">50+ Essential Words with Examples</span>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
                         ${mod.words50.map((w, idx) => `
                             <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
                                 <div class="flex items-center justify-between">
-                                    <span class="font-extrabold text-sm text-slate-900">${idx + 1}. ${w[0]}</span>
+                                    <span class="font-extrabold text-sm text-slate-900">${idx + 1}.${w[0]}</span>
                                     <span class="text-xs font-bold text-brand-700 bangla-text">${w[1]}</span>
                                 </div>
                                 <p class="text-[11px] text-slate-600 italic">"${w[2]}"</p>
@@ -1619,7 +1618,6 @@ if (ruleNum % 7 === 0) {
                 </div>
             `;
         }
-
         // =========================================================================
         // ৪. 500+ VOCABULARY, SYNONYMS, COLLOCATIONS & PHRASES DATABASE ENGINE
         // প্রোগ্রামার নোট: এখানে ৪টি মডিউলের ২০০+ শব্দ এবং অতিরিক্ত ৩২০+ একাডেমিক সিনোনিম, 
