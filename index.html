@@ -1162,38 +1162,38 @@
                 </article>
                 `;
 
-// প্রতি ৭টি কার্ডের পর পর একটি নন-ইন্ট্রুসিভ ইন-ফিড বিজ্ঞাপন স্লট যুক্ত করা হচ্ছে
+// প্রতি ৭টি কার্ডের পর পর একটি নন-ইন্ট্রুসিভ ইন-ফিড বিজ্ঞাপন স্লট যুক্ত করা হচ্ছে (Responsive 728x90 & 320x50)
 if (ruleNum % 7 === 0) {
-                    html += `
-                    <style>
-                        .in-feed-ad-wrap {
-                            width: 100%;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            overflow: hidden;
-                        }
-                    </style>
-                    <div class="rounded-2xl p-2 text-center my-3 overflow-hidden flex flex-col items-center justify-center bg-slate-100/60 border border-slate-200/60">
-                        <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">Sponsored</span>
-                        <div class="in-feed-ad-wrap">
-                            <iframe 
-                                srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><script>atOptions={'key':'24aea642fc2a5f84c503929e8ebc6780','format':'iframe','height':50,'width':320,'params':{}};<\/script><script src='https://bauval.org/22/24aea642fc2a5f84c503929e8ebc6780'><\/script></body>" 
-                                width="320" 
-                                height="50" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                style="border:none; overflow:hidden; width:320px; height:50px;">
-                            </iframe>
-                        </div>
-                    </div>
-                    `;
-                }
-            });
+    html += `
+    <div class="my-4 p-3 rounded-2xl bg-slate-100/60 border border-slate-200/60 text-center flex flex-col items-center justify-center overflow-hidden">
+        <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">Sponsored</span>
+        
+        <!-- Desktop: 728x90 Leaderboard (বক্সের সাথে চওড়ায় পুরোপুরি ফিট হবে) -->
+        <div class="hidden md:flex justify-center items-center overflow-hidden w-full">
+            <iframe 
+                srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><scr${''}ipt>atOptions={'key':'70fc53dad09c1de56ec9a593048519c7','format':'iframe','height':90,'width':728,'params':{}};</scr${''}ipt><scr${''}ipt src='https://bauval.org/22/70fc53dad09c1de56ec9a593048519c7'></scr${''}ipt></body>" 
+                width="728" 
+                height="92" 
+                frameborder="0" 
+                scrolling="no" 
+                style="border:none; overflow:hidden; width:728px; height:92px;">
+            </iframe>
+        </div>
 
-            container.innerHTML = html;
-        }
-
+        <!-- Mobile: 320x50 Banner (মোবাইলের ছোট স্ক্রিনের জন্য) -->
+        <div class="flex md:hidden justify-center items-center overflow-hidden w-full">
+            <iframe 
+                srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><scr${''}ipt>atOptions={'key':'24aea642fc2a5f84c503929e8ebc6780','format':'iframe','height':50,'width':320,'params':{}};</scr${''}ipt><scr${''}ipt src='https://bauval.org/22/24aea642fc2a5f84c503929e8ebc6780'></scr${''}ipt></body>" 
+                width="320" 
+                height="52" 
+                frameborder="0" 
+                scrolling="no" 
+                style="border:none; overflow:hidden; width:320px; height:52px;">
+            </iframe>
+        </div>
+    </div>
+    `;
+}
         // =========================================================================
         // ৩. IELTS 4 MODULES ENCYCLOPEDIA (সকল সাব-ক্যাটাগরি + ৩৫+ রুলস + ৫০+ প্র্যাকটিস শব্দ)
         // =========================================================================
