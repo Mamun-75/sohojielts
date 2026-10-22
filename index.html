@@ -2002,23 +2002,58 @@ if (ruleNum % 7 === 0) {
         }
 
         // =========================================================================
-        // ৬. BONUS PDF SHEETS VAULT (প্রোগ্রামারদের জন্য সহজে নতুন শিট যোগ করার তালিকা)
-        // প্রোগ্রামার নোট: নিচের bonusPdfList অ্যারেতে শুধু নতুন একটি লাইন যোগ করলেই
-        // ওয়েবসাইটে নতুন PDF শিট ও প্রিন্ট বাটন চলে আসবে!
+     // ৬. BONUS PDF SHEETS VAULT (ডাইনামিক প্রিন্টেবল লেকচার শিট জেনারেটরসহ)
         // =========================================================================
         const bonusPdfList = [
-            { title: "SSC & HSC Right Form of Verbs 50 Golden Rules Cheat Sheet", cat: "Grammar PDF", pages: "8 Pages", desc: "বোর্ড ও ভর্তি পরীক্ষার জন্য এক নজরে ৫০টি শর্টকাট সূত্র ও বোর্ড প্রশ্নের সমাধান।" },
-            { title: "IELTS Writing Task 2 Band 8.5 Essay Templates & 100 Linkers", cat: "IELTS Writing", pages: "12 Pages", desc: "৫ ধরনের Essay লেখার পূর্ণাঙ্গ কাঠামো এবং একাডেমিক লিংকিং ওয়ার্ডের তালিকা।" },
-            { title: "Top 500 Academic Vocabulary, Synonyms & Collocations PDF", cat: "Vocabulary Sheet", pages: "18 Pages", desc: "বাংলা অর্থ ও উদাহরণ বাক্যসহ IELTS-এর সবচেয়ে গুরুত্বপূর্ণ ৫০০টি শব্দের প্রিন্টেবল শিট।" },
-            { title: "Passage Narration & Transformation Master Chart (Class 8 - HSC)", cat: "Grammar PDF", pages: "6 Pages", desc: "এক টেবিলে সকল Tense পরিবর্তন ও Simple-Complex-Compound রূপান্তর সূত্র।" },
-            { title: "IELTS Speaking Part 1, 2 & 3 Recent 50 Cue Cards with Band 8 Answers", cat: "IELTS Speaking", pages: "15 Pages", desc: "সাম্প্রতিক পরীক্ষার ৫০টি কিউ কার্ডের আইডিয়া এবং ন্যাচারাল ইডিয়মসের তালিকা।" },
-            { title: "IELTS Listening & Reading Synonym Trap List (200 Pairs)", cat: "Reading & Listening", pages: "10 Pages", desc: "প্রশ্নে কোন শব্দ থাকলে প্যাসেজে বা অডিওতে কোন সমার্থক শব্দ খুঁজতে হবে তার তালিকা।" }
+            { 
+                id: "right-form-verbs",
+                title: "SSC & HSC Right Form of Verbs 50 Golden Rules Cheat Sheet", 
+                cat: "Grammar PDF", 
+                pages: "8 Pages", 
+                desc: "বোর্ড ও ভর্তি পরীক্ষার জন্য এক নজরে ৫০টি শর্টকাট সূত্র, উদাহরণ ও বোর্ড প্রশ্নের সমাধান।" 
+            },
+            { 
+                id: "writing-task-2",
+                title: "IELTS Writing Task 2 Band 8.5 Essay Templates & 100 Linkers", 
+                cat: "IELTS Writing", 
+                pages: "12 Pages", 
+                desc: "৫ ধরনের Essay লেখার পূর্ণাঙ্গ কাঠামো, একাডেমিক লিংকিং ওয়ার্ড এবং ৩৫+ গোল্ডেন রুলস।" 
+            },
+            { 
+                id: "vocab-500",
+                title: "Top Academic Vocabulary, Synonyms & Collocations PDF", 
+                cat: "Vocabulary Sheet", 
+                pages: "18 Pages", 
+                desc: "বাংলা অর্থ ও উদাহরণ বাক্যসহ IELTS-এর সকল মডিউলের সবচেয়ে গুরুত্বপূর্ণ হাই-স্কোরিং শব্দের প্রিন্টেবল শিট।" 
+            },
+            { 
+                id: "narration-transformation",
+                title: "Passage Narration & Transformation Master Chart (Class 8 - HSC)", 
+                cat: "Grammar PDF", 
+                pages: "6 Pages", 
+                desc: "এক টেবিলে সকল Tense পরিবর্তন, Person/Adverb পরিবর্তন ও Simple-Complex-Compound রূপান্তর সূত্র।" 
+            },
+            { 
+                id: "speaking-cue-cards",
+                title: "IELTS Speaking Part 1, 2 & 3 Cue Cards & Band 8.5 Strategies", 
+                cat: "IELTS Speaking", 
+                pages: "15 Pages", 
+                desc: "সাম্প্রতিক পরীক্ষার কিউ কার্ডের আইডিয়া, ন্যাচারাল ইডিয়মস এবং স্পিকিং ফ্লুয়েন্সি বাড়ানোর কৌশল।" 
+            },
+            { 
+                id: "listening-reading-traps",
+                title: "IELTS Listening & Reading Synonym Trap List & Skimming Guide", 
+                cat: "Reading & Listening", 
+                pages: "10 Pages", 
+                desc: "প্রশ্নে কোন শব্দ থাকলে প্যাসেজে বা অডিওতে কোন সমার্থক শব্দ খুঁজতে হবে তার পূর্ণাঙ্গ তালিকা ও কৌশল।" 
+            }
         ];
 
         function initPdfSection() {
             const box = document.getElementById('bonusPdfGrid');
+            if (!box) return;
             box.innerHTML = bonusPdfList.map((pdf, i) => `
-                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between space-y-4">
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between space-y-4 hover:border-brand-500 transition">
                     <div class="space-y-2">
                         <div class="flex items-center justify-between">
                             <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">${pdf.cat}</span>
@@ -2028,14 +2063,316 @@ if (ruleNum % 7 === 0) {
                         <p class="text-xs text-slate-600 bangla-text">${pdf.desc}</p>
                     </div>
                     <div class="pt-2 border-t border-slate-100 flex items-center gap-2">
-                        <button onclick="window.print()" class="w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition bangla-text">
-                            🖨️ প্রিন্ট / Save as PDF করুন
+                        <button onclick="openPrintableSheet(${i})" class="w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition bangla-text cursor-pointer">
+                            🖨️ শিট ওপেন ও Save as PDF করুন
                         </button>
                     </div>
                 </div>
             `).join('');
         }
 
+        // প্রতিটি কার্ডের জন্য ওয়েবসাইটের আসল ডেটা থেকে পূর্ণাঙ্গ পিডিএফ/লেকচার শিট জেনারেট করার ফাংশন
+        function openPrintableSheet(index) {
+            const pdf = bonusPdfList[index];
+            let sheetBodyHTML = '';
+
+            // ১. Right Form of Verbs Cheat Sheet
+            if (pdf.id === 'right-form-verbs') {
+                const verbRules = [
+                    ["Present Indefinite (Universal Truth / Habit)", "Subject 3rd Person Singular হলে Verb-এর সাথে s/es যুক্ত হয়। (যেমন: Always, regularly, daily, generally থাকলে)", "He always (speak) the truth. ➔ He always speaks the truth."],
+                    ["Present Continuous Signal", "বাক্যে Now, at this moment, at present, day by day থাকলে Subject অনুযায়ী am/is/are + Verb(ing) হয়।", "Look! The boys (play) football. ➔ Look! The boys are playing football."],
+                    ["Present Perfect Signal", "বাক্যে Just, just now, already, yet, ever, lately, recently থাকলে have/has + Verb-এর Past Participle (V3) হয়।", "I already (finish) my homework. ➔ I have already finished my homework."],
+                    ["Past Indefinite Signal", "Yesterday, ago, long ago, last night/year/week বা অতীত নির্দেশক শব্দ থাকলে Verb-এর Past Form (V2) হয়।", "He (leave) the room ten minutes ago. ➔ He left the room ten minutes ago."],
+                    ["Since / For + Time (Perfect Continuous)", "নির্দিষ্ট সময় (Since) বা ব্যাপক সময় (For) উল্লেখ থাকলে have been / has been + Verb(ing) হয়।", "It (rain) since morning. ➔ It has been raining since morning."],
+                    ["Preposition + Verb(ing)", "To ব্যতীত যেকোনো Preposition (in, on, of, for, from, by, without, after, before)-এর পর Verb-এর সাথে ing যুক্ত হয়।", "He is fond of (read) novels. ➔ He is fond of reading novels."],
+                    ["With a view to / Look forward to", "With a view to, look forward to, get used to, addicted to, devoted to-এর পর সর্বদা Verb + ing হয়।", "I went to the library with a view to (collect) notes. ➔ collecting notes."],
+                    ["Modal Auxiliaries (Active vs Passive)", "Can, could, may, might, shall, should, will, would, must-এর পর Active-এ V1 বসে, কিন্তু 'be' থাকলে V3 বসে।", "The work must be (complete) today. ➔ The work must be completed today."],
+                    ["Had better / Would rather / Let", "Had better, had rather, would better, would rather, let, need not, dare not-এর পর প্রদত্ত Verb-এর Base form (V1) বসে।", "You had better (consult) a doctor. ➔ You had better consult a doctor."],
+                    ["It is time / It is high time", "It is time বা It is high time-এর পর Subject থাকলে পরের Verb-টি Past Indefinite (V2) হয়।", "It is high time we (change) our study habits. ➔ It is high time we changed our study habits."],
+                    ["As if / As though Rule", "As if / As though-এর প্রথম অংশ Present হলে পরের অংশ Past (V2/were) হয়; প্রথম অংশ Past হলে পরের অংশ Past Perfect (had + V3) হয়।", "He talks as if he (know) everything. ➔ He talks as if he knew everything."],
+                    ["Lest + Should/Might", "বাক্যে Lest থাকলে পরবর্তী Subject-এর পর সর্বদা should বা might + Verb-এর Base form (V1) বসে।", "Walk fast lest you (miss) the train. ➔ Walk fast lest you should miss the train."],
+                    ["While + Verb(ing) vs Subject", "While-এর ঠিক পরেই Verb থাকলে তার সাথে ing যুক্ত হয়, কিন্তু Subject থাকলে Past Continuous (was/were + ing) হয়।", "While (walk) in the garden, I saw a snake. ➔ While walking in the garden..."],
+                    ["No sooner had ... than", "No sooner had + Sub + V3 ... than + Sub + V2 (দ্বিতীয় অংশে সর্বদা Past Indefinite হয়)।", "No sooner had the teacher (enter) the class than the students (stand) up. ➔ entered ... stood."],
+                    ["Conditional 1 (First Conditional)", "If + Present Indefinite থাকলে অপর অংশে Subject + will/can/may + V1 বসে।", "If you work hard, you (shine) in life. ➔ you will shine in life."],
+                    ["Conditional 2 (Second Conditional)", "If + Past Indefinite (V2) থাকলে অপর অংশে Subject + would/could/might + V1 বসে।", "If I (have) wings, I would fly. ➔ If I had wings, I would fly."],
+                    ["Conditional 3 (Third Conditional)", "If + Past Perfect (had + V3) থাকলে অপর অংশে Subject + would have / could have / might have + V3 বসে।", "If he had tried, he (succeed). ➔ he would have succeeded."],
+                    ["Causative Verbs (Have / Get / Make)", "Have/Get + বস্তুবাচক Object থাকলে পরের Verb-টি V3 হয়; কিন্তু Make + ব্যক্তি/বস্তু থাকলে V1 হয়।", "I got my car (repair). ➔ repaired. / He made me (laugh). ➔ laugh."],
+                    ["One of the / Each of the / Neither of the", "এগুলোর পর Noun-টি Plural হলেও Verb সর্বদা Singular (is/was/has/V+s) হয়।", "One of my friends (be) a magistrate. ➔ One of my friends is a magistrate."],
+                    ["Before & After (Past Perfect)", "Past Perfect Tense-এ Before-এর পূর্বে এবং After-এর পরে 'had + V3' বসে, অন্য অংশে V2 বসে।", "The patient (die) before the doctor came. ➔ The patient had died before the doctor came."]
+                ];
+
+                sheetBodyHTML += `
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 mb-3">📌 পার্ট ১: বোর্ড ও অ্যাডমিশন পরীক্ষার ২০টি মূল গোল্ডেন সূত্র (Master Table)</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width:25%">সূত্র ও চেনার উপায় (Signal)</th>
+                                    <th style="width:40%">গ্রামাটিক্যাল নিয়ম (Rule)</th>
+                                    <th style="width:35%">বোর্ড পরীক্ষার উদাহরণ (Solved)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${verbRules.map((r, idx) => `
+                                    <tr>
+                                        <td><strong>#${idx+1}.${r[0]}</strong></td>
+                                        <td>${r[1]}</td>
+                                        <td><em>${r[2]}</em></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            }
+
+            // ২. IELTS Writing Task 2 Templates & Linkers
+            else if (pdf.id === 'writing-task-2') {
+                const wMod = (typeof ieltsModulesDB !== 'undefined' && ieltsModulesDB.writing) ? ieltsModulesDB.writing : null;
+                sheetBodyHTML += `
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 mb-3">📌 পার্ট ১: IELTS Writing Task 2 Band 8.5+ ফোর-প্যারাগ্রাফ কাঠামো (Universal Structure)</h2>
+                        <div class="card">
+                            <p><strong>1. Introduction (40–50 Words):</strong> [Paraphrase the Question Prompt using synonyms] + [Clear Thesis Statement: <em>"This essay will argue that... / In my opinion, the advantages far outweigh the drawbacks because..."</em>]</p>
+                            <p style="margin-top:6px;"><strong>2. Body Paragraph 1 (90–100 Words):</strong> [Topic Sentence stating Main Idea 1] ➔ [Explanation: <em>"To elaborate, when..."</em>] ➔ [Concrete Example: <em>"For instance, a recent study / empirical trend shows that..."</em>] ➔ [Mini-conclusion linking back to question].</p>
+                            <p style="margin-top:6px;"><strong>3. Body Paragraph 2 (90–100 Words):</strong> [Topic Sentence stating Main Idea 2 or Counter-argument] ➔ [Logical Development: <em>"Furthermore, / On the other hand,..."</em>] ➔ [Real-world Illustration: <em>"Take Bangladesh or developing nations as a prime example..."</em>]</p>
+                            <p style="margin-top:6px;"><strong>4. Conclusion (35–45 Words):</strong> [Restate Thesis in different words: <em>"In conclusion, while..."</em>] + [Final Thought / Recommendation without introducing new arguments].</p>
+                        </div>
+
+                        <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 my-4">📌 পার্ট ২: একাডেমিক লিংকিং ওয়ার্ডস ও কোহেসিভ ডিভাইস (High-Scoring Linkers)</h2>
+                        <table>
+                            <thead>
+                                <tr><th>ব্যবহারের ক্ষেত্র (Function)</th><th>সাধারণ শব্দ বর্জন করুন (Avoid)</th><th>Band 8.5+ একাডেমিক বিকল্প (Use Instead)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>নতুন পয়েন্ট যোগ করতে (Adding)</strong></td><td>Also, Plus, Beside</td><td>Furthermore, Moreover, In addition to this, Not only... but also</td></tr>
+                                <tr><td><strong>বিপরীত যুক্তি দিতে (Contrast)</strong></td><td>But, Anyway</td><td>However, Nevertheless, Conversely, Notwithstanding this, Whereas</td></tr>
+                                <tr><td><strong>উদাহরণ দিতে (Examples)</strong></td><td>Like, Such as</td><td>For instance, To illustrate this point, A compelling example of this is</td></tr>
+                                <tr><td><strong>কারণ ও ফলাফল (Cause/Effect)</strong></td><td>So, Because of this</td><td>Consequently, As a result, Therefore, Thus, This inevitably leads to</td></tr>
+                                <tr><td><strong>উপসংহার টানতে (Conclusion)</strong></td><td>In a nutshell, At last</td><td>In conclusion, To conclude, Taking everything into consideration</td></tr>
+                            </tbody>
+                        </table>
+
+                        ${wMod ? `
+                            <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 my-4">📌 পার্ট ৩: রাইটিং মডিউলের মূল কৌশল ও হাই-স্কোরিং ভোকাবুলারি</h2>
+                            <div class="grid-2">
+                                ${wMod.coreLessons.map((ls, idx) => `<div class="card"><strong>Rule #${idx+1}: ${ls.title}</strong><br>${ls.tip}</div>`).join('')}
+                            </div>
+                            <h3 class="font-bold text-md mt-4 mb-2">💎 রাইটিংয়ের ৫০টি অত্যাবশ্যকীয় একাডেমিক শব্দ:</h3>
+                            <table>
+                                <thead><tr><th>#</th><th>Academic Word</th><th>বাংলা অর্থ</th><th>Contextual Example</th></tr></thead>
+                                <tbody>
+                                    ${wMod.words50.map((w, idx) => `<tr><td>${idx+1}</td><td><strong>${w[0]}</strong></td><td>${w[1]}</td><td><em>"${w[2]}"</em></td></tr>`).join('')}
+                                </tbody>
+                            </table>
+                        ` : ''}
+                    </div>
+                `;
+            }
+
+            // ৩. Top Academic Vocabulary (ওয়েবসাইটের ৪টি মডিউলের সব শব্দ একত্রে)
+            else if (pdf.id === 'vocab-500') {
+                let allWords = [];
+                if (typeof ieltsModulesDB !== 'undefined') {
+                    Object.keys(ieltsModulesDB).forEach(k => {
+                        const m = ieltsModulesDB[k];
+                        if (m && m.words50) {
+                            m.words50.forEach(w => allWords.push({ mod: k.toUpperCase(), word: w[0], bn: w[1], ex: w[2] }));
+                        }
+                    });
+                }
+                sheetBodyHTML += `
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 mb-3">📌 IELTS চারটি মডিউলের হাই-স্কোরিং একাডেমিক ভোকাবুলারি ও কলোকেশন তালিকা</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width:8%">ক্রমিক</th>
+                                    <th style="width:14%">মডিউল</th>
+                                    <th style="width:20%">শব্দ (Vocabulary)</th>
+                                    <th style="width:20%">বাংলা অর্থ</th>
+                                    <th style="width:38%">বাক্যে সঠিক প্রয়োগ (Academic Example)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${allWords.map((item, idx) => `
+                                    <tr>
+                                        <td>#${idx+1}</td>
+                                        <td><strong>${item.mod}</strong></td>
+                                        <td><strong>${item.word}</strong></td>
+                                        <td>${item.bn}</td>
+                                        <td><em>"${item.ex}"</em></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            }
+
+            // ৪. Narration & Transformation Master Chart
+            else if (pdf.id === 'narration-transformation') {
+                sheetBodyHTML += `
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 mb-3">📌 পার্ট ১: Passage Narration - Sentence ও Tense পরিবর্তনের মাস্টার চার্ট</h2>
+                        <table>
+                            <thead>
+                                <tr><th>Sentence Type</th><th>Reporting Verb (said to) পরিবর্তন</th><th>Linker (কমা তুলে)</th><th>মূল পরিবর্তন নিয়ম</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Assertive</strong></td><td>told / replied / added that</td><td>that</td><td>Sub + Verb (Past form) + Ext.</td></tr>
+                                <tr><td><strong>Interrogative</strong></td><td>asked / inquired of</td><td>if / whether (বা WH-word)</td><td>প্রশ্নবোধক বাক্যটি Assertive (Sub + Verb) হয়ে যাবে।</td></tr>
+                                <tr><td><strong>Imperative (মূল Verb)</strong></td><td>ordered / advised / requested</td><td>to / not to</td><td>to + Verb-এর Base form (V1) বসে।</td></tr>
+                                <tr><td><strong>Imperative (Let us)</strong></td><td>proposed to / suggested</td><td>that</td><td>Sub + should + V1 + Ext.</td></tr>
+                                <tr><td><strong>Optative</strong></td><td>wished / prayed</td><td>that</td><td>Sub + might + V1 + Ext.</td></tr>
+                                <tr><td><strong>Exclamatory</strong></td><td>exclaimed with joy/sorrow</td><td>that</td><td>What/How উঠে very/great বসে এবং Assertive হয়।</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 my-4">📌 পার্ট ২: Simple – Complex – Compound রূপান্তরের গোল্ডেন চার্ট</h2>
+                        <table>
+                            <thead>
+                                <tr><th>অর্থের ধরন</th><th>Simple Sentence</th><th>Complex Sentence</th><th>Compound Sentence</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>সত্ত্বেও (Contrast)</strong></td><td>In spite of / Despite + Possessive + (V+ing / Noun)</td><td>Though / Although + Sub + Verb</td><td>But / Yet</td></tr>
+                                <tr><td><strong>কারণ (Reason)</strong></td><td>Because of / Owing to + (V+ing / Noun)</td><td>Since / As / Because + Sub + Verb</td><td>And so / Therefore</td></tr>
+                                <tr><td><strong>উদ্দেশ্য (Purpose)</strong></td><td>Too ... to + V1 (নেতিবাচক)</td><td>So ... that + Sub + cannot/could not + V1</td><td>Very ... and so + Sub + cannot/could not</td></tr>
+                                <tr><td><strong>উদ্দেশ্য (ইতিবাচক)</strong></td><td>In order to / To + V1</td><td>So that / In order that + Sub + can/may + V1</td><td>Want to ... and so</td></tr>
+                                <tr><td><strong>শর্ত (Condition +)</strong></td><td>By + (Verb + ing)</td><td>If + Sub + Verb (Affirmative)</td><td>Imperative + and + Clause</td></tr>
+                                <tr><td><strong>শর্ত (Condition -)</strong></td><td>Without + (Verb + ing)</td><td>Unless + Sub + Verb / If + Negative</td><td>Imperative + or + Clause</td></tr>
+                                <tr><td><strong>সময় (Time)</strong></td><td>At the time of + (Verb + ing)</td><td>When / While + Sub + Verb</td><td>And at that time</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            }
+
+            // ৫. IELTS Speaking Cue Cards & Strategies
+            else if (pdf.id === 'speaking-cue-cards') {
+                const sMod = (typeof ieltsModulesDB !== 'undefined' && ieltsModulesDB.speaking) ? ieltsModulesDB.speaking : null;
+                sheetBodyHTML += `
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 mb-3">📌 পার্ট ১: IELTS Speaking Part 1, 2 & 3 স্কোরিং ফর্মুলা (PPF Method)</h2>
+                        <div class="card">
+                            <p><strong>Part 1 (Introduction & Interview - 4 to 5 mins):</strong> কখনোই শুধু এক শব্দে (Yes/No) উত্তর দেবেন না। <em>Direct Answer + Reason + Short Personal Example</em>—এই ৩ বাক্যের কাঠামোতে উত্তর দিন।</p>
+                            <p style="margin-top:6px;"><strong>Part 2 (Cue Card / Long Turn - 2 mins speaking):</strong> PPF (Past - Present - Future) টেকনিক ব্যবহার করুন। টপিকটির অতীত পটভূমি (৩০ সেকেন্ড), বর্তমান অবস্থা ও মূল বর্ণনা (৬০ সেকেন্ড), এবং ভবিষ্যৎ অনুভূতি বা প্রভাব (৩০ সেকেন্ড) বললে কখনোই ২ মিনিটের আগে কথা ফুরাবে না।</p>
+                            <p style="margin-top:6px;"><strong>Part 3 (Two-Way Discussion):</strong> এখানে ব্যক্তিগত উদাহরণের চেয়ে সমাজ বা দেশের সামগ্রিক প্রেক্ষাপট (Generalization, Comparison & Speculation) নিয়ে কথা বলুন।</p>
+                        </div>
+                        ${sMod ? `
+                            <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 my-4">📌 পার্ট ২: স্পিকিং সাব-ক্যাটাগরি ও মাস্টার রুলস</h2>
+                            <div class="grid-2">
+                                ${sMod.coreLessons.map((ls, idx) => `<div class="card"><strong>Rule #${idx+1}: ${ls.title}</strong><br>${ls.tip}</div>`).join('')}
+                            </div>
+                            <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 my-4">📌 পার্ট ৩: স্পিকিংয়ে Band 8.0+ পাওয়ার ৫০টি ন্যাচারাল শব্দ ও এক্সপ্রেশন</h2>
+                            <table>
+                                <thead><tr><th>#</th><th>Speaking Expression / Word</th><th>বাংলা অর্থ</th><th>Live Answer Usage</th></tr></thead>
+                                <tbody>
+                                    ${sMod.words50.map((w, idx) => `<tr><td>${idx+1}</td><td><strong>${w[0]}</strong></td><td>${w[1]}</td><td><em>"${w[2]}"</em></td></tr>`).join('')}
+                                </tbody>
+                            </table>
+                        ` : ''}
+                    </div>
+                `;
+            }
+
+            // ৬. IELTS Listening & Reading Synonym Traps
+            else if (pdf.id === 'listening-reading-traps') {
+                const rMod = (typeof ieltsModulesDB !== 'undefined' && ieltsModulesDB.reading) ? ieltsModulesDB.reading : null;
+                const lMod = (typeof ieltsModulesDB !== 'undefined' && ieltsModulesDB.listening) ? ieltsModulesDB.listening : null;
+                sheetBodyHTML += `
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 mb-3">📌 পার্ট ১: Listening ও Reading-এর মূল কৌশল ও ট্র্যাপ এড়ানোর নিয়ম</h2>
+                        <div class="grid-2">
+                            ${rMod ? rMod.coreLessons.map((ls, idx) => `<div class="card"><strong>Reading Rule #${idx+1}: ${ls.title}</strong><br>${ls.tip}</div>`).join('') : ''}
+                            ${lMod ? lMod.coreLessons.map((ls, idx) => `<div class="card"><strong>Listening Rule #${idx+1}: ${ls.title}</strong><br>${ls.tip}</div>`).join('') : ''}
+                        </div>
+                        <h2 class="text-lg font-bold text-slate-900 border-b-2 border-emerald-600 pb-1 my-4">📌 পার্ট ২: প্যাসেজ ও অডিওর ১০০টি হাই-ফ্রিকোয়েন্সি কিউওয়ার্ড ও সিনোনিম ট্র্যাপ</h2>
+                        <table>
+                            <thead><tr><th>#</th><th>মডিউল</th><th>প্রশ্নের শব্দ / Keyword</th><th>বাংলা অর্থ</th><th>প্যাসেজ বা অডিওতে যেভাবে থাকে (Context)</th></tr></thead>
+                            <tbody>
+                                ${rMod ? rMod.words50.map((w, idx) => `<tr><td>R-${idx+1}</td><td>Reading</td><td><strong>${w[0]}</strong></td><td>${w[1]}</td><td><em>"${w[2]}"</em></td></tr>`).join('') : ''}
+                                ${lMod ? lMod.words50.map((w, idx) => `<tr><td>L-${idx+1}</td><td>Listening</td><td><strong>${w[0]}</strong></td><td>${w[1]}</td><td><em>"${w[2]}"</em></td></tr>`).join('') : ''}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            }
+
+            // প্রিন্টেবল উইন্ডো ওপেন করা (ওপরে ও নিচে স্ক্রিন-অনলি Adsterra অ্যাডসহ)
+            const printWin = window.open('', '_blank');
+            printWin.document.write(`
+                <!DOCTYPE html>
+                <html lang="bn">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>${pdf.title} - SohojIELTS BD</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+                    <style>
+                        body { font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif; color: #0f172a; margin: 0; padding: 20px; background: #f8fafc; line-height: 1.55; }
+                        .sheet-container { max-width: 900px; margin: 0 auto; background: #ffffff; padding: 32px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+                        .sheet-header { border-bottom: 3px solid #059669; padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+                        .brand-badge { background: #ecfdf5; color: #047857; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 99px; display: inline-block; margin-bottom: 6px; }
+                        h1 { font-size: 22px; margin: 0; color: #0f172a; }
+                        h2 { font-size: 16px; color: #065f46; margin-top: 22px; margin-bottom: 10px; border-bottom: 2px solid #10b981; padding-bottom: 4px; }
+                        table { width: 100%; border-collapse: collapse; margin-bottom: 18px; font-size: 12.5px; }
+                        th, td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left; vertical-align: top; }
+                        th { background: #f1f5f9; font-weight: 800; color: #0f172a; }
+                        tr:nth-child(even) { background: #f8fafc; }
+                        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+                        .card { border: 1px solid #e2e8f0; background: #f8fafc; padding: 12px; border-radius: 10px; font-size: 12.5px; margin-bottom: 10px; }
+                        .toolbar { position: sticky; top: 10px; z-index: 50; background: #0f172a; color: #fff; padding: 12px 20px; border-radius: 12px; max-width: 900px; margin: 0 auto 16px auto; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+                        .btn-print { background: #10b981; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 13px; }
+                        .btn-print:hover { background: #059669; }
+                        .ad-box { text-align: center; margin: 14px auto; padding: 10px; background: #fff; border: 1px dashed #cbd5e1; border-radius: 12px; max-width: 750px; }
+                        @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } .sheet-container { padding: 16px; } }
+                        @media print {
+                            body { background: #fff; padding: 0; }
+                            .sheet-container { border: none; box-shadow: none; padding: 0; max-width: 100%; }
+                            .no-print { display: none !important; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="toolbar no-print">
+                        <div>
+                            <strong>📄 ${pdf.title}</strong>
+                            <div style="font-size:11px; color:#94a3b8;">প্রিন্ট ডায়ালগে Destination হিসেবে "Save as PDF" সিলেক্ট করুন।</div>
+                        </div>
+                        <button class="btn-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
+                    </div>
+
+                    <!-- শিট ভিউয়ার পেজের উপরের বিজ্ঞাপন (প্রিন্টে আসবে না, কিন্তু ভিউ করলে আয় হবে) -->
+                    <div class="ad-box no-print">
+                        <div style="font-size:9px; color:#94a3b8; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;">Sponsored Download Partner</div>
+                        <iframe srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;'><scr${''}ipt>atOptions={'key':'0f36a48163e383cec32928e3b5fc9ef5','format':'iframe','height':250,'width':300,'params':{}};</scr${''}ipt><scr${''}ipt src='https://bauval.org/22/0f36a48163e383cec32928e3b5fc9ef5'></scr${''}ipt></body>" width="300" height="252" frameborder="0" scrolling="no" style="border:none;"></iframe>
+                    </div>
+
+                    <div class="sheet-container">
+                        <div class="sheet-header">
+                            <div>
+                                <span class="brand-badge">${pdf.cat} • ${pdf.pages}</span>
+                                <h1>${pdf.title}</h1>
+                                <p style="margin:4px 0 0 0; font-size:12px; color:#475569;">${pdf.desc}</p>
+                            </div>
+                            <div style="text-align:right; font-size:12px; color:#047857; font-weight:700;">
+                                SohojIELTS BD<br>
+                                <span style="font-size:11px; color:#64748b; font-weight:500;">sohojieltsbd.pages.dev</span>
+                            </div>
+                        </div>
+
+                        ${sheetBodyHTML}
+
+                        <div style="margin-top:24px; padding-top:12px; border-top:1px solid #e2e8f0; text-align:center; font-size:11px; color:#64748b;">
+                            © SohojIELTS BD (sohojieltsbd.pages.dev) — বাংলাদেশের শিক্ষার্থীদের জন্য শতভাগ ফ্রি Academic Grammar ও IELTS 8.5+ গাইড।
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `);
+            printWin.document.close();
+        }
         // =========================================================================
         // ৭. গ্লোবাল সার্চ ফাংশন (যেকোনো গ্রামার রুলস বা ভোকাবুলারি খোঁজার জন্য)
         // =========================================================================
