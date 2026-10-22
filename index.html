@@ -641,17 +641,31 @@
                     <p class="text-xs sm:text-sm text-amber-50 bangla-text">ওয়েবসাইটের মূল অধ্যায়গুলো পড়ার পাশাপাশি অফলাইনে প্রিন্ট করে পড়ার জন্য এখান থেকে আমাদের স্পেশাল শিটগুলো ফ্রিতে ডাউনলোড করে নিন।</p>
                 </div>
             </div>
-<!-- PDF পেজের উপরের বিজ্ঞাপন স্লট (300x250 Banner Ad) -->
-            <div class="ad-slot-box rounded-2xl p-4 text-center my-4 bg-white border border-slate-200 shadow-sm overflow-hidden flex flex-col items-center justify-center">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block mb-2">Sponsored Download Partner</span>
-                <div class="w-full flex justify-center items-center overflow-hidden">
+<!-- PDF পেজের উপরের বিজ্ঞাপন স্লট (Tight-Fit Responsive 728x90 & 300x250) -->
+            <div class="w-fit mx-auto my-5 bg-white border border-slate-200/80 rounded-2xl p-3 text-center shadow-sm flex flex-col items-center justify-center">
+                <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Sponsored Download Partner</span>
+                
+                <!-- Desktop: 728x90 Leaderboard -->
+                <div class="hidden md:flex justify-center items-center overflow-hidden">
+                    <iframe 
+                        srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><script>atOptions={'key':'70fc53dad09c1de56ec9a593048519c7','format':'iframe','height':90,'width':728,'params':{}};</script><script src='https://bauval.org/22/70fc53dad09c1de56ec9a593048519c7'></script></body>" 
+                        width="728" 
+                        height="92" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        style="border:none; overflow:hidden; width:728px; height:92px;">
+                    </iframe>
+                </div>
+
+                <!-- Mobile: 300x250 Medium Rectangle -->
+                <div class="flex md:hidden justify-center items-center overflow-hidden">
                     <iframe 
                         srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><script>atOptions={'key':'0f36a48163e383cec32928e3b5fc9ef5','format':'iframe','height':250,'width':300,'params':{}};</script><script src='https://bauval.org/22/0f36a48163e383cec32928e3b5fc9ef5'></script></body>" 
                         width="300" 
-                        height="255" 
+                        height="252" 
                         frameborder="0" 
                         scrolling="no" 
-                        style="border:none; overflow:hidden; width:300px; height:255px;">
+                        style="border:none; overflow:hidden; width:300px; height:252px;">
                     </iframe>
                 </div>
             </div>
@@ -690,22 +704,32 @@
     <footer class="bg-slate-950 text-slate-300 pt-12 pb-8 border-t border-slate-800 mt-12 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
             
-            <!-- ফুটারের উপরে শেষ বিজ্ঞাপন স্লট (Mobile Responsive Fixed) -->
-            <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-3 text-center overflow-hidden flex flex-col items-center justify-center min-h-[65px]">
-                <div class="w-full overflow-hidden flex justify-center items-center">
-                    <div class="footer-ad-scale flex justify-center items-center">
-                        <!-- PASTE FOOTER AD SCRIPT HERE -->
-                        <script>
-                          atOptions = {
-                            'key' : '07c9895472d92fcccf77b6fe3df456ba',
-                            'format' : 'iframe',
-                            'height' : 60,
-                            'width' : 468,
-                            'params' : {}
-                          };
-                        </script>
-                        <script src="https://bauval.org/22/07c9895472d92fcccf77b6fe3df456ba"></script>
-                    </div>
+<!-- ফুটারের উপরে শেষ বিজ্ঞাপন স্লট (Tight-Fit Responsive 728x90 & 320x50) -->
+            <div class="w-fit mx-auto my-4 bg-slate-900/95 border border-slate-800 rounded-2xl p-2.5 text-center shadow-md flex flex-col items-center justify-center">
+                <span class="text-[9px] font-bold uppercase tracking-widest text-slate-500 mb-1">Sponsored</span>
+                
+                <!-- Desktop: 728x90 Leaderboard -->
+                <div class="hidden md:flex justify-center items-center overflow-hidden">
+                    <iframe 
+                        srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><script>atOptions={'key':'70fc53dad09c1de56ec9a593048519c7','format':'iframe','height':90,'width':728,'params':{}};</script><script src='https://bauval.org/22/70fc53dad09c1de56ec9a593048519c7'></script></body>" 
+                        width="728" 
+                        height="92" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        style="border:none; overflow:hidden; width:728px; height:92px;">
+                    </iframe>
+                </div>
+
+                <!-- Mobile: 320x50 Banner -->
+                <div class="flex md:hidden justify-center items-center overflow-hidden">
+                    <iframe 
+                        srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><script>atOptions={'key':'24aea642fc2a5f84c503929e8ebc6780','format':'iframe','height':50,'width':320,'params':{}};</script><script src='https://bauval.org/22/24aea642fc2a5f84c503929e8ebc6780'></script></body>" 
+                        width="320" 
+                        height="52" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        style="border:none; overflow:hidden; width:320px; height:52px;">
+                    </iframe>
                 </div>
             </div>
 
@@ -1569,17 +1593,31 @@ if (ruleNum % 7 === 0) {
                     </div>
                 </div>
 
-<!-- বিজ্ঞাপন স্লট (IELTS Module 300x250 Ad) -->
-                <div class="ad-slot-box rounded-2xl p-4 text-center my-4 bg-white border border-slate-200 shadow-sm overflow-hidden flex flex-col items-center justify-center">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block mb-2">Sponsored</span>
-                    <div class="w-full flex justify-center items-center overflow-hidden">
+<!-- বিজ্ঞাপন স্লট (IELTS Module Tight-Fit Responsive Ad) -->
+                <div class="w-fit mx-auto my-4 bg-white border border-slate-200/80 rounded-2xl p-3 text-center shadow-sm flex flex-col items-center justify-center">
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Sponsored</span>
+                    
+                    <!-- Desktop: 728x90 Leaderboard -->
+                    <div class="hidden md:flex justify-center items-center overflow-hidden">
+                        <iframe 
+                            srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><scr${''}ipt>atOptions={'key':'70fc53dad09c1de56ec9a593048519c7','format':'iframe','height':90,'width':728,'params':{}};</scr${''}ipt><scr${''}ipt src='https://bauval.org/22/70fc53dad09c1de56ec9a593048519c7'></scr${''}ipt></body>" 
+                            width="728" 
+                            height="92" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            style="border:none; overflow:hidden; width:728px; height:92px;">
+                        </iframe>
+                    </div>
+
+                    <!-- Mobile: 300x250 Medium Rectangle -->
+                    <div class="flex md:hidden justify-center items-center overflow-hidden">
                         <iframe 
                             srcdoc="<body style='margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;'><scr${''}ipt>atOptions={'key':'0f36a48163e383cec32928e3b5fc9ef5','format':'iframe','height':250,'width':300,'params':{}};</scr${''}ipt><scr${''}ipt src='https://bauval.org/22/0f36a48163e383cec32928e3b5fc9ef5'></scr${''}ipt></body>" 
                             width="300" 
-                            height="255" 
+                            height="252" 
                             frameborder="0" 
                             scrolling="no" 
-                            style="border:none; overflow:hidden; width:300px; height:255px;">
+                            style="border:none; overflow:hidden; width:300px; height:252px;">
                         </iframe>
                     </div>
                 </div>
