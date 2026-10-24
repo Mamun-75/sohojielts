@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sohojieltsbd.pages.dev/sitemap.xml
